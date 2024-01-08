@@ -41,7 +41,7 @@ function ReplyFormFields({
 }) {
   const { pending } = useFormStatus();
 
-  const isDraftSaved = !!storedComment;
+  const isDraftSaved = !!storedComment && !pending;
 
   return (
     <div key={commentId} className="flex flex-col gap-2">
