@@ -1,0 +1,11 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "import/no-relative-parent-imports": [
+      "error",
+      {
+        "ignore": ["@/app", "@/components", "@/lib"]
+      }
+    ]
+  }
+}
