@@ -6,13 +6,24 @@ import { replyAction, type ReplyActionData } from "./actions";
 import { Loader2 } from "lucide-react";
 import { useFormStatus, useFormState } from "react-dom";
 import Link from "next/link";
+import useStoreState from "use-store-state";
 
 export function ReplyForm({ storyId }: { storyId: string }) {
   const [state, formAction] = useFormState(replyAction, {});
+  const [storedComment, setStoredComment] = useStoreState(storyId, "");
 
   return (
-    <form action={formAction}>
-      <ReplyFormFields storyId={storyId} {...state} />
+    <form
+      action={(payload) => {
+        formAction(payload);
+        setStoredComment("");
+      }}>
+      <ReplyFormFields
+        storyId={storyId}
+        storedComment={storedComment}
+        setStoredComment={setStoredComment}
+        {...state}
+      />
     </form>
   );
 }
@@ -20,11 +31,17 @@ export function ReplyForm({ storyId }: { storyId: string }) {
 function ReplyFormFields({
   error,
   commentId,
+  setStoredComment,
+  storedComment,
   storyId,
 }: ReplyActionData & {
+  setStoredComment: (value: string) => void;
+  storedComment: string;
   storyId: string;
 }) {
   const { pending } = useFormStatus();
+
+  const isDraftSaved = !!storedComment;
 
   return (
     <div key={commentId} className="flex flex-col gap-2">
@@ -36,6 +53,10 @@ function ReplyFormFields({
           className="w-full text-base bg-white"
           placeholder="Write a reply..."
           rows={4}
+          value={storedComment}
+          onChange={(e) => {
+            setStoredComment(e.target.value);
+          }}
           onKeyDown={(e) => {
             if (
               (e.ctrlKey || e.metaKey) &&
@@ -59,7 +80,7 @@ function ReplyFormFields({
           {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
           Submit
         </Button>
-        {error &&
+        {error ? (
           "message" in error &&
           (error.code === "AUTH_ERROR" ? (
             <span className="text-red-500 text-sm">
@@ -71,7 +92,10 @@ function ReplyFormFields({
             </span>
           ) : (
             <span className="text-red-500 text-sm">{error.message}</span>
-          ))}
+          ))
+        ) : isDraftSaved ? (
+          <span className="text-[#666] text-sm">Saved to draft.</span>
+        ) : null}
       </div>
     </div>
   );
