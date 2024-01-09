@@ -7,6 +7,7 @@ import { Loader2 } from "lucide-react";
 import { useFormStatus, useFormState } from "react-dom";
 import Link from "next/link";
 import useStoreState from "use-store-state";
+import { useEffect, useState } from 'react';
 
 export function ReplyForm({ storyId }: { storyId: string }) {
   const [state, formAction] = useFormState(replyAction, {});
@@ -40,8 +41,12 @@ function ReplyFormFields({
   storyId: string;
 }) {
   const { pending } = useFormStatus();
+  const [isDraftSaved, setIsDraftSaved] = useState(false);
 
-  const isDraftSaved = !!storedComment && !pending;
+  // Change state only after mount to prevent hydration errors
+  useEffect(() => {
+    setIsDraftSaved(!!storedComment);
+  }, [storedComment]);
 
   return (
     <div key={commentId} className="flex flex-col gap-2">
@@ -93,7 +98,7 @@ function ReplyFormFields({
           ) : (
             <span className="text-red-500 text-sm">{error.message}</span>
           ))
-        ) : isDraftSaved ? (
+        ) : isDraftSaved && !pending ? (
           <span className="text-[#666] text-sm">Saved to draft.</span>
         ) : null}
       </div>
