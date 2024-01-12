@@ -79,7 +79,7 @@ for the community to fill in some important gaps, however:
 - [ ] More efficient comment datastructures
 - [ ] Optimistic comments with `useOptimistic`
 - [ ] Local storage of comment and submission drafts
-- [ ] Improve the `/next` implementationa after login
+- [ ] Improve the `/next` implementation after login
 - [ ] Add support for passkeys
 - [ ] A basic admin panel
 - [ ] User profiles
