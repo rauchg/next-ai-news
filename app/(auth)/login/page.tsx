@@ -19,14 +19,16 @@ export default function Login() {
 export function LoginPage({ next }: { next?: string }) {
   return (
     <main className="max-w-sm p-5">
-      <h1 className="text-xl font-semibold mb-4 text-gray-800">Login</h1>
+      <h1 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+        Login
+      </h1>
       <SignInForm next={next} />
       <div className="mt-3">
         <span className="cursor-default" title="Unimplemented">
           Forgot your password?
         </span>
       </div>
-      <h2 className="text-xl font-semibold mt-8 mb-4 text-gray-800">
+      <h2 className="text-xl font-semibold mt-8 mb-4 text-gray-800 dark:text-gray-200">
         Create Account
       </h2>
       <SignUpForm next={next} />
@@ -61,7 +63,10 @@ function SignInFormFields({ error }: SignInActionData) {
   return (
     <>
       <div>
-        <label className="block text-gray-700 mb-1" htmlFor="username">
+        <label
+          className="block text-gray-700 dark:text-gray-300 mb-1"
+          htmlFor="username"
+        >
           Username:
         </label>
         <Input
@@ -78,7 +83,10 @@ function SignInFormFields({ error }: SignInActionData) {
         />
       </div>
       <div>
-        <label className="block text-gray-700 mb-1" htmlFor="password">
+        <label
+          className="block text-gray-700 dark:text-gray-300 mb-1"
+          htmlFor="password"
+        >
           Password:
         </label>
         <Input
@@ -121,7 +129,10 @@ function SignUpFormFields({ error }: SignUpActionData) {
   return (
     <div className="space-y-3">
       <div className="space-y-2">
-        <label className="block text-gray-700 mb-1" htmlFor="new-username">
+        <label
+          className="block text-gray-700 dark:text-gray-300 mb-1"
+          htmlFor="new-username"
+        >
           Username:
         </label>
         <Input
@@ -144,7 +155,10 @@ function SignUpFormFields({ error }: SignUpActionData) {
         ) : null}
       </div>
       <div className="space-y-2">
-        <label className="block text-gray-700 mb-1" htmlFor="new-password">
+        <label
+          className="block text-gray-700 dark:text-gray-300 mb-1"
+          htmlFor="new-password"
+        >
           Password:
         </label>
         <Input

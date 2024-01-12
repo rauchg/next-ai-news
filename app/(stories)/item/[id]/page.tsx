@@ -85,7 +85,7 @@ export default async function ItemPage({
         <div className="flex-grow">
           {story.url != null ? (
             <a
-              className="text-[#000000] hover:underline"
+              className="text-[#000000] dark:text-[#ffffff] hover:underline"
               rel={"nofollow noreferrer"}
               target={"_blank"}
               href={story.url}
@@ -96,7 +96,7 @@ export default async function ItemPage({
             <Link
               prefetch={true}
               href={`/item/${story.id.replace(/^story_/, "")}`}
-              className="text-[#000000] hover:underline"
+              className="text-[#000000] dark:text-[#ffffff] hover:underline"
             >
               {story.title}
             </Link>

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Suspense } from "react";
 import { Toaster } from "sonner";
 import { WelcomeToast } from "./welcome-toast";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Next AI News",
@@ -20,12 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Suspense fallback={null}>
-          {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Suspense fallback={null}>
+            {children}
 
-          <Toaster closeButton />
-          <WelcomeToast />
-        </Suspense>
+            <Toaster closeButton />
+            <WelcomeToast />
+          </Suspense>
+        </ThemeProvider>
       </body>
     </html>
   );

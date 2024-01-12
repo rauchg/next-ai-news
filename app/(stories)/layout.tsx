@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { SearchInput } from "./search-input";
 import { AuthNav, SubmitLink, ThreadsLink } from "./auth-nav";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const metadata = {
   openGraph: {
@@ -123,13 +124,13 @@ export default function HNLayout({ children }: { children: React.ReactNode }) {
         </div>
       </header>
 
-      <main className="py-4 px-1 md:px-2 flex-grow bg-[#f6f6ef]">
+      <main className="py-4 px-1 md:px-2 flex-grow bg-[#f6f6ef] dark:bg-[#1b1d20]">
         {children}
       </main>
 
       <footer
         className="flex flex-col items-center justify-center p-4 border-t-2 border-t-[#FF9966]
-              text-black bg-[#f6f6ef]"
+              text-black bg-[#f6f6ef] dark:bg-[#1b1d20] dark:text-white"
       >
         <nav>
           <ul className="flex flex-wrap justify-center gap-1 md:gap-2 text-sm">
@@ -159,6 +160,10 @@ export default function HNLayout({ children }: { children: React.ReactNode }) {
             <li aria-hidden="true">|</li>
             <li>
               <span className="cursor-default">Contact</span>
+            </li>
+            <li aria-hidden="true">|</li>
+            <li>
+              <ThemeToggle />
             </li>
           </ul>
         </nav>
