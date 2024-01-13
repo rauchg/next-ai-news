@@ -25,7 +25,7 @@ export function SubmitFormFields({ error }: SubmitActionData) {
     <div className="space-y-4 py-1">
       <div className="flex flex-col flex-grow sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 items-start md:items-center">
         <label
-          className="block text-sm font-medium text-gray-700 md:w-16 md:text-right"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 md:w-16 md:text-right"
           htmlFor="title"
         >
           Title
@@ -48,7 +48,7 @@ export function SubmitFormFields({ error }: SubmitActionData) {
       ) : null}
       <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 items-start md:items-center">
         <label
-          className="block text-sm font-medium text-gray-700 md:w-16 md:text-right"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 md:w-16 md:text-right"
           htmlFor="url"
         >
           URL
@@ -70,7 +70,7 @@ export function SubmitFormFields({ error }: SubmitActionData) {
       ) : null}
       <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 items-start">
         <label
-          className="block text-sm font-medium text-gray-700 md:pt-2 md:w-16 md:text-right"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 md:pt-2 md:w-16 md:text-right"
           htmlFor="text"
         >
           Text
@@ -111,7 +111,7 @@ export function SubmitFormFields({ error }: SubmitActionData) {
             <p className="mt-4 text-md text-red-500">{error.message}</p>
           ) : null}
 
-          <p className="mt-4 text-md text-gray-700">
+          <p className="mt-4 text-md text-gray-700 dark:text-gray-300">
             Leave url blank to submit a question for discussion. If there is no
             url, text will appear at the top of the thread. If there is a url,
             text is optional.

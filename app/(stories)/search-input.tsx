@@ -16,7 +16,7 @@ export function SearchInput() {
     <Link
       href="/search"
       prefetch={true}
-      className={`text-base text-zinc-500 w-1/2 inline-flex items-center border rounded-md border-zinc-200 bg-white px-2 h-8 ${
+      className={`text-base text-zinc-500 w-1/2 inline-flex items-center border rounded-md border-zinc-200 bg-white dark:bg-[#303035] dark:border-zinc-800 px-2 h-8 ${
         pathname === "/search" ? "hidden" : ""
       }`}
     >

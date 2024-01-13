@@ -142,13 +142,13 @@ export async function Stories({
         {stories.map((story, n) => {
           return (
             <li key={story.id} className="flex gap-2">
-              <span className="align-top text-[#666] md:text-[#828282] text-right flex-shrink-0 min-w-6 md:min-w-5">
+              <span className="align-top text-[#666] md:text-[#979797] text-right flex-shrink-0 min-w-6 md:min-w-5">
                 {n + (page - 1) * PER_PAGE + 1}.
               </span>
               <div>
                 {story.url != null ? (
                   <a
-                    className="text-[#000000] hover:underline"
+                    className="text-[#000000] dark:text-[#ffffff] hover:underline"
                     rel={"nofollow noreferrer"}
                     target={"_blank"}
                     href={story.url}
@@ -159,7 +159,7 @@ export async function Stories({
                   <Link
                     prefetch={true}
                     href={`/item/${story.id.replace(/^story_/, "")}`}
-                    className="text-[#000000] hover:underline"
+                    className="text-[#000000] dark:text-[#ffffff] hover:underline"
                   >
                     {q == null ? (
                       story.title
@@ -173,11 +173,11 @@ export async function Stories({
                   </Link>
                 )}
                 {story.domain && (
-                  <span className="text-xs ml-1 text-[#666] md:text-[#828282]">
+                  <span className="text-xs ml-1 text-[#666] md:text-[#979797]">
                     ({story.domain})
                   </span>
                 )}
-                <p className="text-xs text-[#666] md:text-[#828282]">
+                <p className="text-xs text-[#666] md:text-[#979797]">
                   {story.points} point{story.points > 1 ? "s" : ""} by{" "}
                   {story.submitted_by ?? story.username}{" "}
                   <TimeAgo now={now} date={story.created_at} /> |{" "}

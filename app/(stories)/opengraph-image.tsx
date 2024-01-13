@@ -48,7 +48,10 @@ export default async function MainOG() {
   const now = Date.now();
   return new ImageResponse(
     (
-      <div tw="bg-[#f6f6ef] flex h-full w-full" style={font("Inter 300")}>
+      <div
+        tw="bg-[#f6f6ef] dark:bg-[#1b1d20] flex h-full w-full"
+        style={font("Inter 300")}
+      >
         <div tw="flex flex-col justify-between h-full w-full">
           <div tw="p-4 pt-8 px-8 pb-0 flex flex-row items-center w-full text-3xl">
             <div tw="flex items-center">
