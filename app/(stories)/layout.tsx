@@ -28,7 +28,7 @@ export default function HNLayout({ children }: { children: React.ReactNode }) {
               <span>N</span>
             </span>
           </Link>
-          <div className="flex flex-col md:flex-row items-start md:items-center">
+          <div className="flex flex-col md:flex-row items-start md:items-center text-black">
             <Link prefetch={true} href="/" className="mr-3">
               <h1 className="text-base font-bold leading-tight whitespace-nowrap">
                 Next AI News
@@ -117,7 +117,7 @@ export default function HNLayout({ children }: { children: React.ReactNode }) {
             </nav>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-end min-w-[30%] md:min-w-[inherit] md:items-center">
+        <div className="flex flex-col md:flex-row items-end min-w-[30%] md:min-w-[inherit] md:items-center text-black">
           <Suspense fallback={null}>
             <AuthNav />
           </Suspense>
