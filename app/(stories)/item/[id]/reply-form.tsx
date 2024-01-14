@@ -6,8 +6,8 @@ import { replyAction, type ReplyActionData } from "./actions";
 import { Loader2 } from "lucide-react";
 import { useFormStatus, useFormState } from "react-dom";
 import Link from "next/link";
-import useStoreState from "use-store-state";
 import { useEffect, useState } from 'react';
+import useStoreState from '@/lib/use-local-store';
 
 export function ReplyForm({ storyId }: { storyId: string }) {
   const [state, formAction] = useFormState(replyAction, {});
