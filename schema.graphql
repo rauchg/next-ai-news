@@ -12,6 +12,49 @@ type Mutation {
   _version: String!
 }
 
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
 type Query {
   _version: String!
+  node(id: ID!): Node
+  nodes(ids: [ID!]!): [Node]!
+  stories(after: String, before: String, first: Int, isNewest: Boolean!, last: Int, limit: Int, page: Int! = 1, q: String, type: String): QueryStoriesConnection!
+  story(id: ID!): Story
+  user(id: ID!): User
+}
+
+type QueryStoriesConnection {
+  edges: [QueryStoriesConnectionEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type QueryStoriesConnectionEdge {
+  cursor: String!
+  node: Story!
+}
+
+type Story implements Node {
+  comments_count: Int
+  created_at: Date
+  domain: String
+  id: ID!
+  points: Int!
+  submitter: User!
+  title: String!
+  url: String
+}
+
+type User implements Node {
+  id: ID!
+  username: String
 }
