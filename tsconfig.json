@@ -24,7 +24,8 @@
       {
         "name": "@0no-co/graphqlsp",
         "schema": "./schema.graphql",
-        "tadaOutputLocation": "./fuse/introspection.ts"
+        "tadaOutputLocation": "./fuse/introspection.ts",
+        "trackFieldUsage": false,
       }
     ],
     "paths": {

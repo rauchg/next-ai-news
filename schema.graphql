@@ -45,7 +45,7 @@ type QueryStoriesConnectionEdge {
 
 type Story implements Node {
   comments_count: Int
-  created_at: Date
+  created_at: Date!
   domain: String
   id: ID!
   points: Int!

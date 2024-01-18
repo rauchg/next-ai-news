@@ -1,7 +1,7 @@
 import { addQueryFields, node } from 'fuse'
 import { and, count, desc, eq, ilike, sql } from 'drizzle-orm'
 
-import { db, storiesTable } from '../app/db'
+import { db, storiesTable } from '@/app/db'
 import { User } from '../types/User'
 import { getTableConfig } from 'drizzle-orm/pg-core';
 
@@ -23,11 +23,12 @@ export const Story = node({
     submitter: t.field({
       type: User,
       nullable: false,
-      resolve: (story) => story.submitted_by ?? story.username,
+      resolve: (story) => story.submitted_by ?? story.username ?? 'unknown',
     }),
     comments_count: t.exposeInt('comments_count'),
     created_at: t.expose('created_at', {
-      type: 'Date'
+      type: 'Date',
+      nullable: false,
     }),
   })
 })
