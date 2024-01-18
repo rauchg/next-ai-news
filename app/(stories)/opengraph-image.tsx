@@ -5,7 +5,7 @@ import { ImageResponse } from "next/og";
 import JSTimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import { graphql } from "@/fuse";
-import { execute } from "fuse/next/server";
+import { execute } from "@/fuse/server";
 
 let timeAgo: JSTimeAgo | null = null;
 const numberFormatter = new Intl.NumberFormat("en-US");

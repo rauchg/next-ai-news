@@ -5,7 +5,7 @@ import { MoreLink } from "./more-link";
 import Link from "next/link";
 import Highlighter from "react-highlight-words";
 import { graphql } from "@/fuse";
-import { execute } from "fuse/next/server";
+import { execute } from "@/fuse/server";
 
 const PER_PAGE = 30;
 
@@ -80,8 +80,7 @@ export async function Stories({
                 ) : (
                   <Link
                     prefetch={true}
-                    // TODO: story.id is opaque now. Figure out what this is used for and how to fix it.
-                    href={`/item/${story.id.replace(/^story_/, "")}`}
+                    href={`/item/${story.id}`}
                     className="text-[#000000] hover:underline"
                   >
                     {q == null ? (
@@ -123,7 +122,7 @@ export async function Stories({
                   <Link
                     prefetch={true}
                     className="hover:underline"
-                    href={`/item/${story.id.replace(/^story_/, "")}`}
+                    href={`/item/${story.id}`}
                   >
                     {story.comments_count} comments
                   </Link>

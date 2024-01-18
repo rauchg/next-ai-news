@@ -3,9 +3,6 @@ import type { introspection } from './introspection';
 
 export const graphql = initGraphQLTada<{
   introspection: typeof introspection;
-  scalars: {
-    Date: Date
-  }
 }>();
 
 export type { FragmentOf, ResultOf, VariablesOf } from 'gql.tada';

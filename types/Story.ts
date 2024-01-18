@@ -5,8 +5,7 @@ import { db, storiesTable } from '@/app/db'
 import { User } from '../types/User'
 import { getTableConfig } from 'drizzle-orm/pg-core';
 
-const storiesTableName = getTableConfig(storiesTable).name;
-
+const STORIES_TABLE_NAME = getTableConfig(storiesTable).name;
 const PER_PAGE = 30;
 
 export const Story = node({
@@ -46,7 +45,7 @@ addQueryFields((t) => ({
     nodeNullable: false,
     nullable: false,
     edgesNullable: false,
-    resolve: async (_, args) => {
+    resolve: async (_, args, ...rest) => {
       const [result, hasNextPage, hasPreviousPage] = await Promise.all([
         db.select().from(storiesTable).limit(PER_PAGE).offset((args.page - 1) * PER_PAGE).orderBy(desc(storiesTable.created_at))
           .where(
@@ -103,7 +102,7 @@ addQueryFields((t) => ({
             // high performance, estimative count
             const statement = sql`SELECT reltuples::BIGINT AS estimate
             FROM pg_class
-            WHERE relname = ${storiesTableName}`;
+            WHERE relname = ${STORIES_TABLE_NAME}`;
 
           const res = await db.execute(statement);
           if (!res.rows[0]) return 0;
