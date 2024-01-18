@@ -36,8 +36,8 @@ dependencies:
     specifier: ^0.29.1
     version: 0.29.1(@neondatabase/serverless@0.6.1)(pg@8.11.3)
   fuse:
-    specifier: ^0.11.0
-    version: 0.11.0(@types/node@20.9.0)(next@14.0.5-canary.41)(react@18.2.0)(typescript@5.2.2)
+    specifier: ^0.11.1
+    version: 0.11.1(@types/node@20.9.0)(next@14.0.5-canary.41)(react@18.2.0)(typescript@5.2.2)
   gql.tada:
     specifier: ^1.0.2
     version: 1.0.2(graphql@16.8.1)
@@ -3415,7 +3415,7 @@ packages:
     resolution: {integrity: sha512-xq+q3SRMOxGivLhBNaUdC64hDTQwejJ+H0T/NB1XMtTVEwNTrfFF3gAxiyW0Bu/xWEGhjVKgUcMhCrUy2+uCWg==}
     dependencies:
       base64-js: 1.5.1
-      ieee754: 1.1.13
+      ieee754: 1.2.1
       isarray: 1.0.0
     dev: false
 
@@ -4963,8 +4963,8 @@ packages:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
 
-  /fuse@0.11.0(@types/node@20.9.0)(next@14.0.5-canary.41)(react@18.2.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-IJeTGiItI+oJRk4roPPbBMnyGh85xtAzM1zjxNt6zZppwxxNAw8xl/FX8X5o8Oi+j2ecwrgcrUv/TzIoEpae+w==}
+  /fuse@0.11.1(@types/node@20.9.0)(next@14.0.5-canary.41)(react@18.2.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-J3wM0AQ86P5rk8N+DIHzHFifXuRY2f0VfY3pKWGXCzkzX9F7oez4t2MiUqvMEz1/xmTGeU0nE4A7uy8HKUho7g==}
     hasBin: true
     dependencies:
       '@escape.tech/graphql-armor-block-field-suggestions': 2.1.0

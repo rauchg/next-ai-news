@@ -1,5 +1,7 @@
+import { nextFusePlugin } from 'fuse/next/plugin'
+
 /** @type {import('next').NextConfig} */
-export default {
+const config = {
   experimental: {
     ppr: true,
   },
@@ -26,3 +28,5 @@ export default {
     },
   ],
 };
+
+export default nextFusePlugin()(config)
