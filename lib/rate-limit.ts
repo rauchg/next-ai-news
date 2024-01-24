@@ -39,3 +39,17 @@ export const newCommentRateLimit = new Ratelimit({
   analytics: true,
   prefix: "ratelimit:newcomment",
 });
+
+export const voteRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(25, "15 m"),
+  analytics: true,
+  prefix: "ratelimit:vote",
+});
+
+export const unvoteRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(25, "15 m"),
+  analytics: true,
+  prefix: "ratelimit:unvote",
+});
