@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { auth } from "@/app/auth";
 import { nanoid } from "nanoid";
 import { TimeAgo } from "@/components/time-ago";
+import { VoteIcon } from "@/components/icons/vote-icon";
 
 async function getComments({
   storyId,
@@ -146,23 +147,8 @@ function CommentItem({
             <span className="text-2xl text-[#FF9966] cursor-pointer">*</span>
           ) : (
             <>
-              <svg
-                height="12"
-                viewBox="0 0 32 16"
-                width="12"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="m2 27 14-29 14 29z" fill="#999" />
-              </svg>
-              <svg
-                className="transform rotate-180"
-                height="12"
-                viewBox="0 0 32 16"
-                width="12"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="m2 27 14-29 14 29z" fill="#999" />
-              </svg>
+              <VoteIcon />
+              <VoteIcon className="transform rotate-180" />
             </>
           )}
         </div>

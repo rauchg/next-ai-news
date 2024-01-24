@@ -8,6 +8,7 @@ import {
   varchar,
   timestamp,
   AnyPgColumn,
+  uniqueIndex,
 } from "drizzle-orm/pg-core";
 import { customAlphabet } from "nanoid";
 import { nolookalikes } from "nanoid-dictionary";
@@ -79,8 +80,37 @@ export const storiesTable = pgTable(
   })
 );
 
+export const composeStoryId = (id: string) => {
+  return `story_${id}`;
+};
+
 export const genStoryId = () => {
-  return `story_${nanoid(12)}`;
+  return composeStoryId(nanoid(12));
+};
+
+export const votesTable = pgTable(
+  "votes",
+  {
+    id: varchar("id", { length: 256 }).primaryKey().notNull(),
+    user_id: varchar("user_id", { length: 256 })
+      .notNull()
+      .references(() => usersTable.id, { onDelete: "cascade" }),
+    story_id: varchar("story_id", { length: 256 })
+      .notNull()
+      .references(() => storiesTable.id, { onDelete: "cascade" }),
+    created_at: timestamp("created_at").notNull().defaultNow(),
+    updated_at: timestamp("updated_at").notNull().defaultNow(),
+  },
+  (t) => ({
+    story_id_user_id_idx: uniqueIndex("v_story_id_user_id_idx").on(
+      t.story_id,
+      t.user_id
+    ),
+  })
+);
+
+export const genVoteId = () => {
+  return `vote_${nanoid(12)}`;
 };
 
 export const commentsTable = pgTable(
