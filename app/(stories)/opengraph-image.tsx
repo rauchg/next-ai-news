@@ -2,9 +2,9 @@ export const runtime = "edge";
 export const revalidate = 60;
 
 import { ImageResponse } from "next/og";
-import { getStories, getStoriesCount } from "@/components/stories";
 import JSTimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import { getStories, getStoriesCount } from "@/components/stories";
 
 let timeAgo: JSTimeAgo | null = null;
 const numberFormatter = new Intl.NumberFormat("en-US");

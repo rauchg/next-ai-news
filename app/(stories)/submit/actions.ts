@@ -1,7 +1,7 @@
 "use server";
 
 import z from "zod";
-import { db, storiesTable, genStoryId } from "@/app/db";
+import { db, storiesTable, genStoryId, votesTable, genVoteId } from "@/app/db";
 import { auth } from "@/app/auth";
 import { redirect } from "next/navigation";
 import { newStoryRateLimit } from "@/lib/rate-limit";
@@ -84,8 +84,11 @@ export async function submitAction(
   // get hostname from url
   const id = genStoryId();
 
+  // TODO: transaction
+  // await db.transaction(async (tx) => {
+  const tx = db;
   try {
-    await db.insert(storiesTable).values({
+    await tx.insert(storiesTable).values({
       id,
       type: getType(input.data.title as string),
       title: input.data.title as string,
@@ -94,6 +97,13 @@ export async function submitAction(
         ? new URL(input.data.url as string).hostname
         : null,
       submitted_by: userId,
+    });
+    // each story gets automatically upvoted by its author
+    // because each story starts with 1 point
+    await tx.insert(votesTable).values({
+      id: genVoteId(),
+      story_id: id,
+      user_id: userId,
     });
   } catch (e) {
     console.error(e);
