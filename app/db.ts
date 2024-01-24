@@ -37,6 +37,7 @@ export const usersTable = pgTable(
     username: varchar("username", { length: 256 }).notNull().unique(),
     email: varchar("email", { length: 256 }),
     karma: integer("karma").notNull().default(0),
+    bio: text("bio"),
     password: varchar("password", { length: 256 }).notNull(),
     created_at: timestamp("created_at").notNull().defaultNow(),
     updated_at: timestamp("updated_at").notNull().defaultNow(),
@@ -46,8 +47,12 @@ export const usersTable = pgTable(
   })
 );
 
+export const composeUserId = (id: string) => {
+  return `user_${id}`;
+};
+
 export const genUserId = () => {
-  return `user_${nanoid(12)}`;
+  return composeUserId(nanoid(12));
 };
 
 export const storiesTable = pgTable(
