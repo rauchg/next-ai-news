@@ -82,7 +82,7 @@ for the community to fill in some important gaps, however:
 - [ ] Improve the `/next` implementation after login
 - [ ] Add support for passkeys
 - [ ] A basic admin panel
-- [ ] User profiles
+- [x] User profiles
 
 ### License
 

@@ -34,7 +34,8 @@ const getStory = async function getStory(idParam: string) {
         url: storiesTable.url,
         username: storiesTable.username,
         points: storiesTable.points,
-        submitted_by: usersTable.username,
+        submitted_by: storiesTable.submitted_by,
+        author_username: usersTable.username,
         comments_count: storiesTable.comments_count,
         created_at: storiesTable.created_at,
       })
@@ -110,7 +111,18 @@ export default async function ItemPage({
 
           <p className="text-xs text-[#666] md:text-[#828282]">
             {story.points} point{story.points > 1 ? "s" : ""} by{" "}
-            {story.submitted_by ?? story.username}{" "}
+            {(story.author_username ?? story.username) &&
+              (story.submitted_by ? (
+                <Link
+                  prefetch={true}
+                  className="hover:underline"
+                  href={`/user/${story.submitted_by.replace(/^user_/, "")}`}
+                >
+                  {story.author_username ?? story.username}
+                </Link>
+              ) : (
+                <span>{story.author_username ?? story.username}</span>
+              ))}{" "}
             <TimeAgo now={now} date={story.created_at} />{" "}
             <span aria-hidden={true}>| </span>
             <span className="cursor-default" title="Not implemented">

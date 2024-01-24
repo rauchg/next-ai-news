@@ -26,6 +26,13 @@ export const signUpRateLimit = new Ratelimit({
   prefix: "ratelimit:signup",
 });
 
+export const updateProfileRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(5, "15 m"),
+  analytics: true,
+  prefix: "ratelimit:updateprofile",
+});
+
 export const newStoryRateLimit = new Ratelimit({
   redis,
   limiter: Ratelimit.slidingWindow(1, "15 m"),
