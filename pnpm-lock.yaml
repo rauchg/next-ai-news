@@ -36,11 +36,11 @@ dependencies:
     specifier: ^0.29.1
     version: 0.29.1(@neondatabase/serverless@0.6.1)(pg@8.11.3)
   fuse:
-    specifier: ^0.11.1
-    version: 0.11.1(@types/node@20.9.0)(next@14.0.5-canary.41)(react@18.2.0)(typescript@5.2.2)
+    specifier: ^0.11.2
+    version: 0.11.2(@types/node@20.9.0)(next@14.0.5-canary.41)(react@18.2.0)(typescript@5.2.2)
   gql.tada:
-    specifier: ^1.0.2
-    version: 1.0.2(graphql@16.8.1)
+    specifier: ^1.1.0
+    version: 1.1.0(graphql@16.8.1)
   graphql:
     specifier: ^16.8.1
     version: 16.8.1
@@ -86,8 +86,8 @@ dependencies:
 
 devDependencies:
   '@0no-co/graphqlsp':
-    specifier: ^1.0.3
-    version: 1.0.3
+    specifier: ^1.3.0
+    version: 1.3.0
   '@graphql-typed-document-node/core':
     specifier: ^3.2.0
     version: 3.2.0(graphql@16.8.1)
@@ -162,8 +162,8 @@ packages:
       graphql: 16.8.1
     dev: false
 
-  /@0no-co/graphqlsp@1.0.3:
-    resolution: {integrity: sha512-sy1LhvhugDYQxZyDVcGekE5wx02yyD/YAN9ggVBohqo0Ou7W8Pt8ehAJEbWbJeHp+T1JBoI2X5lBy/ReXHPjNg==}
+  /@0no-co/graphqlsp@1.3.0:
+    resolution: {integrity: sha512-eL7ZAvAmncEgAIjVgGcyKsrpIOmJ4tQfWxTDVPKxiIgRdRA56K+qjW2HtGdxE/WlufnNpbwcizU9D2HddYg1Zg==}
     dependencies:
       node-fetch: 2.7.0
     transitivePeerDependencies:
@@ -4963,8 +4963,8 @@ packages:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
 
-  /fuse@0.11.1(@types/node@20.9.0)(next@14.0.5-canary.41)(react@18.2.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-J3wM0AQ86P5rk8N+DIHzHFifXuRY2f0VfY3pKWGXCzkzX9F7oez4t2MiUqvMEz1/xmTGeU0nE4A7uy8HKUho7g==}
+  /fuse@0.11.2(@types/node@20.9.0)(next@14.0.5-canary.41)(react@18.2.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-KFW3N/p/7awBz0i0Wv703O72xZJYC9Sp2sWL39wFgIAhQdlSoicU8vqg4RcSl6QuTJRhilDrQxbBXKAr9ew7Xw==}
     hasBin: true
     dependencies:
       '@escape.tech/graphql-armor-block-field-suggestions': 2.1.0
@@ -5152,8 +5152,8 @@ packages:
     dependencies:
       get-intrinsic: 1.2.2
 
-  /gql.tada@1.0.2(graphql@16.8.1):
-    resolution: {integrity: sha512-l+HXsQLOvG34otG+a17jgzKbOk0K5fhoI+Ml/bZv6yGcRgMB/IqV7QlB9GrwIjikZHHRmDbWE7hqPXU9Z7dk2Q==}
+  /gql.tada@1.1.0(graphql@16.8.1):
+    resolution: {integrity: sha512-lXG1+0ksgXoJ71DmT1hteqWjrR6ZWFin5RUpF7Q2yQbfg/h14EDK41XUXahxTu8fEgRFUCsPPTY/cSnPbInIhQ==}
     dependencies:
       '@0no-co/graphql.web': 1.0.4(graphql@16.8.1)
     transitivePeerDependencies:
