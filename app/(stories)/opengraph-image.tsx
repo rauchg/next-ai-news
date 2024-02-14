@@ -2,12 +2,33 @@ export const runtime = "edge";
 export const revalidate = 60;
 
 import { ImageResponse } from "next/og";
-import { getStories, getStoriesCount } from "@/components/stories";
 import JSTimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
+import { graphql } from "@/fuse";
+import { execute } from "@/fuse/server";
 
 let timeAgo: JSTimeAgo | null = null;
 const numberFormatter = new Intl.NumberFormat("en-US");
+
+const OPENGRAPH_STORIES_QUERY = graphql(`
+  query getHomepageStories($page: Int, $isNewest: Boolean!, $type: String, $q: String, $limit: Int) {
+    stories(page: $page, isNewest: $isNewest, type: $type, q: $q, limit: $limit) {
+      totalCount
+      edges {
+        node {
+          id
+          title
+          points
+          comments_count
+          created_at
+          submitter {
+            username
+          }
+        }
+      }
+    }
+  }
+`);
 
 /**
  * v0 by Vercel.
@@ -20,15 +41,14 @@ export default async function MainOG() {
     timeAgo = new JSTimeAgo("en-US");
   }
 
-  const stories = await getStories({
+  const { data, errors } = await execute({ query: OPENGRAPH_STORIES_QUERY, variables: {
     isNewest: false,
     page: 1,
     type: "story",
     q: null,
     limit: 3,
-  });
+  } })
 
-  const count = await getStoriesCount();
 
   // fonts
   const inter300 = fetch(
@@ -69,7 +89,7 @@ export default async function MainOG() {
           </div>
           <div tw="p-4 px-8 flex flex-col justify-center flex-1">
             <ul tw="flex flex-col">
-              {stories.map((story, n) => (
+              {data?.stories.edges.map(({ node: story }, n) => (
                 <li key={story.id} tw="text-3xl flex items-start mb-5">
                   <div
                     tw="flex w-18 pr-4 text-right justify-end text-[#FF9966] flex-shrink-0"
@@ -86,7 +106,7 @@ export default async function MainOG() {
                     </span>
                     <div tw="flex text-gray-600">
                       {story.points} points by{" "}
-                      {story.submitted_by ?? story.username}{" "}
+                      {story.submitter.username}{" "}
                       {timeAgo!.format(story.created_at)} | flag | hide |{" "}
                       {story.comments_count} comments
                     </div>
@@ -97,7 +117,7 @@ export default async function MainOG() {
               <li tw="text-3xl flex items-start mb-5">
                 <div tw="flex w-18 pr-4 text-right justify-end text-[#FF9966] flex-shrink-0"></div>
                 <div tw="flex flex-col text-gray-600">
-                  {numberFormatter.format(count)} more
+                  {data?.stories.totalCount && numberFormatter.format(data.stories.totalCount)} more
                 </div>
               </li>
             </ul>
