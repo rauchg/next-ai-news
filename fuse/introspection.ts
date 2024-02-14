@@ -1,3 +1,6 @@
+/* eslint-disable */
+/* prettier-ignore */
+
 /** An IntrospectionQuery representation of your schema.
  *
  * @remarks
@@ -567,10 +570,6 @@ const introspection = {
             "name": "Node"
           }
         ]
-      },
-      {
-        "kind": "SCALAR",
-        "name": "Any"
       }
     ],
     "directives": []
